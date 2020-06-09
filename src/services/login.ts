@@ -9,7 +9,11 @@ export interface LoginParamsType {
 }
 
 export async function fakeAccountLogin(params: LoginParamsType) {
-  return request<API.LoginStateType>('/api/login/account', {
+  const formData = new FormData();
+  for (var key in params) {
+     formData.append(key, params[key]);
+  }
+  return request<API.LoginStateType>('/interview/admin/login', {
     method: 'POST',
     data: params,
   });

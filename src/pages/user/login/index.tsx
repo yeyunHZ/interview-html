@@ -8,6 +8,7 @@ import { LoginParamsType, fakeAccountLogin } from '@/services/login';
 import LoginFrom from './components/Login';
 import styles from './style.less';
 
+
 const { Tab, Username, Password, Mobile, Captcha, Submit } = LoginFrom;
 
 const LoginMessage: React.FC<{
@@ -58,7 +59,8 @@ const Login: React.FC<{}> = () => {
     try {
       // 登录
       const msg = await fakeAccountLogin({ ...values, type });
-      if (msg.status === 'ok') {
+      if (msg.code === 200) {
+        localStorage.setItem('Authorization', 'Bearer'+msg.data);
         message.success('登陆成功！');
         replaceGoto();
         setTimeout(() => {
@@ -66,8 +68,9 @@ const Login: React.FC<{}> = () => {
         }, 0);
         return;
       }
+      message.error(msg.message)
       // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      setUserLoginState(msg.message);
     } catch (error) {
       message.error('登陆失败，请重试！');
     }
@@ -92,7 +95,7 @@ const Login: React.FC<{}> = () => {
               )}
 
               <Username
-                name="username"
+                name="userName"
                 placeholder="用户名: admin or user"
                 rules={[
                   {

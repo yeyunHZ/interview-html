@@ -90,3 +90,4 @@ const errorHandler = (error: { response: Response }) => {
 export const request: RequestConfig = {
   errorHandler,
 };
+
