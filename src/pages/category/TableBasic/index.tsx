@@ -136,6 +136,7 @@ const TableList: React.FC<{}> = () => {
       title: "操作",
       key: "action",
       hideInForm: true,
+      hideInSearch:true,
       render: (text,record) => (
         <span>
           <Button style={{ marginRight: 16 }} onClick={() => {
@@ -161,6 +162,7 @@ const TableList: React.FC<{}> = () => {
   return (
     <PageHeaderWrapper>
       <ProTable
+        search={false}
         actionRef={actionRef}
         rowKey="id"
         toolBarRender={(action, { selectedRows }) => [

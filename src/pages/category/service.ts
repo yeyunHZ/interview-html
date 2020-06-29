@@ -4,7 +4,7 @@ import {CategoryListItem} from './data'
 
 
 export async function cateroryList(params:any) {
-  return request('https://www.rdinterview.top/admin/category/list',{
+  return request('/interview/admin/category/list',{
     headers:{"Authorization": localStorage.getItem('Authorization')}
   });
 }
@@ -14,7 +14,7 @@ export async function addCaterory(params: CategoryListItem) {
   for (const key in params) {
       formData.append(key, params[key]);
   }
-  return request('https://www.rdinterview.top/admin/category/create', {
+  return request('/interview/admin/category/create', {
     method: 'POST',
     data:formData,
     headers:{"Authorization": localStorage.getItem('Authorization')}
@@ -22,7 +22,7 @@ export async function addCaterory(params: CategoryListItem) {
 }
 
 export async function removeCaterory(params: CategoryListItem) {
-  return request('https://www.rdinterview.top/admin/category/delete?categoryId='+params.id, {
+  return request('/interview/admin/category/delete?categoryId='+params.id, {
     headers:{"Authorization": localStorage.getItem('Authorization')}
   });
 }
@@ -37,7 +37,7 @@ export async function updateCaterory(params: any) {
       }
 
   }
-  return request('https://www.rdinterview.top/admin/category/update', {
+  return request('/interview/admin/category/update', {
     method: 'POST',
     data:formData,
     headers:{"Authorization": localStorage.getItem('Authorization')}

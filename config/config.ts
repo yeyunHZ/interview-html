@@ -59,7 +59,7 @@ export default defineConfig({
       component: './category',
     },
     {
-      name: '课程管理',
+      name: '文章管理',
       icon: 'smile',
       path: '/articlelist',
       component: './article',

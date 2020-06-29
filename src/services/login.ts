@@ -15,7 +15,7 @@ export async function fakeAccountLogin(params: LoginParamsType) {
   }
   return request<API.LoginStateType>('/interview/admin/login', {
     method: 'POST',
-    data: params,
+    data: formData,
   });
 }
 
