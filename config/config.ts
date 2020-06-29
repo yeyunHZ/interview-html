@@ -65,6 +65,12 @@ export default defineConfig({
       component: './article',
     },
     {
+      name: '问答题管理',
+      icon: 'smile',
+      path: '/question',
+      component: './question',
+    },
+    {
       component: './404',
     },
   ],

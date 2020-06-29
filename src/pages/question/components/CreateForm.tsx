@@ -12,7 +12,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
   return (
     <Modal
       destroyOnClose
-      title="新建文章"
+      title="新建问答题"
       visible={modalVisible}
       onCancel={() => onCancel()}
       footer={null}
