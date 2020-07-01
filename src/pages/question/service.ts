@@ -31,3 +31,26 @@ export async function questionDetail(params:number) {
 }
 
 
+export async function removeQuestion(params: QuestionListItem) {
+  return request('/interview/admin/question/delete?questionId='+params.id, {
+    headers:{"Authorization": localStorage.getItem('Authorization')}
+  });
+}
+
+
+export async function updateQuestion(params: any) {
+  const formData = new FormData();
+  for (var key in params) {
+      if(key === 'id'){
+        formData.append('questionId', params[key]);
+      }else{
+        formData.append(key, params[key]);
+      }
+
+  }
+  return request('/interview/admin/question/update', {
+    method: 'POST',
+    data:formData,
+    headers:{"Authorization": localStorage.getItem('Authorization')}
+  });
+}

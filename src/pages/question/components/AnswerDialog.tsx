@@ -19,6 +19,7 @@ const AnswerDialog: React.FC<AnswerDialogProps> = (props) => {
       onCancel={() => onCancel()}
       footer={null}
     >
+      <span>
   <ul>
 
 
@@ -28,6 +29,7 @@ const AnswerDialog: React.FC<AnswerDialogProps> = (props) => {
                 )
             }
       </ul>
+      </span>
     </Modal>
   );
 };

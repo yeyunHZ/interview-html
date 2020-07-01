@@ -1,7 +1,7 @@
 import React from 'react';
 import { BasicLayoutProps, Settings as LayoutSettings } from '@ant-design/pro-layout';
 
-import { notification } from 'antd';
+import { notification, message } from 'antd';
 import { history, RequestConfig } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
@@ -15,15 +15,23 @@ export async function getInitialState(): Promise<{
 }> {
   // 如果是登录页面，不执行
   if (history.location.pathname !== '/user/login') {
-    try {
-      const currentUser = await queryCurrent();
-      return {
-        currentUser,
-        settings: defaultSettings,
-      };
-    } catch (error) {
+
+    if(localStorage.getItem('Authorization')?.length>10){
+      try {
+        const currentUser = {};
+        currentUser.name = "admin"
+        return {
+          currentUser,
+          settings: defaultSettings,
+        };
+      } catch (error) {
+        history.push('/user/login');
+      }
+    }else{
+
       history.push('/user/login');
     }
+
   }
   return {
     settings: defaultSettings,

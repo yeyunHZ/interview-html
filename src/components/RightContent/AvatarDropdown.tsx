@@ -18,7 +18,7 @@ export interface GlobalHeaderRightProps {
  * 退出登录，并且将当前的 url 保存
  */
 const loginOut = async () => {
-  await outLogin();
+  localStorage.setItem('Authorization', null);
   const { redirect } = getPageQuery();
   // Note: There may be security issues, please note
   if (window.location.pathname !== '/user/login' && !redirect) {

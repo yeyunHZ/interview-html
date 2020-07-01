@@ -1,4 +1,5 @@
 import { request } from 'umi';
+import { response } from 'express';
 
 export interface LoginParamsType {
   username: string;
@@ -24,5 +25,5 @@ export async function getFakeCaptcha(mobile: string) {
 }
 
 export async function outLogin() {
-  return request('/api/login/outLogin');
+  return JSON.parse("{data:{},success:true}");
 }
